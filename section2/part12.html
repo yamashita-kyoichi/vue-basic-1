@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください<span>マウスを載せないで</span></p>
+        <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください<span v-on:mousemove="noEvent">マウスを載せないで</span></p>
+        <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください<span v-on:mousemove.stop="">マウスを載せないで</span></p>
+        <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください<span v-on:mousemove.stop>マウスを載せないで</span></p>
+        <p>X:{{x}},Y:{{y}}</p>
+        <a v-on:click="noEvent2" href="https://google.com">Google</a>
+        <a v-on:click.prevent="" href="https://google.com">Google</a>
+        <a v-on:click.prevent href="https://google.com">Google</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>　
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                changeMousePosition(divNum, e) {
+                    this.x = e.clientX / divNum;
+                    this.y = e.clientY / divNum;
+                },
+                noEvent: function(event) {
+                    event.stopPropagation();
+                },
+                noEvent2: function(event) {
+                    event.preventDefault();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
