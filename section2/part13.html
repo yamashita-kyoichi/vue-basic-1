@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text"v-on:keyup.enter="myAlert">
+        <input type="text"v-on:keyup.space="myAlert">
+        <input type="text"v-on:keyup.space.enter="myAlert">
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>　
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                myAlert() {
+                    alert('alert!');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
