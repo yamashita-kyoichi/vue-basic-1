@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <a v-bind:href="url">google</a>
+        <br>
+        <a :href="url">google(v-bind省略)</a>
+        <br>
+        <a :[attr]="url">google(v-bind応用)</a>
+        <br>
+        <a v-bind="{href: url, id: id}">google(v-bind応用2)</a>
+        <br>
+        <a v-bind="urlObj">google(v-bind応用3)</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>　
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                url: 'https://google.com',
+                id: 999,
+                attr: 'href',
+                urlObj: {href: 'https://google.com', id: '555'},
+            },
+        })
+    </script>
+</body>
+</html>
+
