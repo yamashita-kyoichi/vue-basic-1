@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 v-bind:class="{ 'red': true,  'bg-blue': false }">hello</h1>
+        <h1 v-bind:class="{ 'red': isActive,  'bg-blue': !isActive }">hello</h1>
+        <h1 v-bind:class="classObj">hello</h1>
+        <br>
+        <button @click="isActive = !isActive">切り替え</button>
+        <h1 :class="[color, bg]">hello</h1>
+        <h1 :class="[{red : isActive}, bg]">hello</h1>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>　
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                color: 'red',
+                bg: 'bg-blue',
+            },
+            computed: {
+                classObj() {
+                    return { 'red': this.isActive,  'bg-blue': this.isActive };
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
